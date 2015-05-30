@@ -19,7 +19,9 @@
     $scope.greeting = "Hello, World!";
     $scope.newText = undefined;
     $scope.changeGreeting = function() {
-      $scope.greeting = $scope.newText;
+			if ($scope.newText !== undefined){
+				$scope.greeting = $scope.newText;
+			}
     };
   });
 
@@ -28,16 +30,25 @@
     $scope.newItem = undefined;
     $scope.items = [1, 2, 3];
     $scope.add = function () {
-      $scope.items.push($scope.newItem);
-      $scope.total = 0;
-      for(var i = 0; i < $scope.items.length; i++){
-        $scope.total += parseInt($scope.items[i]);
-      }
+			if(typeof $scope.newItem === 'number'){
+				$scope.items.push($scope.newItem);
+				$scope.total = 0;
+				for(var i = 0; i < $scope.items.length; i++){
+					$scope.total += parseInt($scope.items[i]);
+				}
+			}
     };
   });
 
   myApp.controller('TestThreeController', function($scope) {
-    $scope.modal = {title: 'Hi!', content: 'This is a message!'};
+		$scope.modalNumber = 1;
+		var myModal = $modal({scope: $scope, template: 'modal.tpl.html', show: false});
+		$scope.showModal = function() {
+			myModal.$promise.then(myModal.show);
+		};
+		$scope.changeModalText = function() {
+			$scope.modalNumber++;
+		};
   });
 
   myApp.controller('TestFourController', function($scope, $http) {
