@@ -40,7 +40,7 @@
     };
   });
 
-  myApp.controller('TestThreeController', function($scope) {
+  myApp.controller('TestThreeController', function($scope, $modal) {
 		$scope.modalNumber = 1;
 		var myModal = $modal({scope: $scope, template: 'modal.tpl.html', show: false});
 		$scope.showModal = function() {

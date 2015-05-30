@@ -1,4 +1,4 @@
-angular.module('mockedDashboardJSON',[])
+angular.module('mockedDashboardJSON',['ngMock'])
 .value('defaultJSON',{
     fakeData: [{
     "id": 1,
